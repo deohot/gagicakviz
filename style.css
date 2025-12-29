@@ -1,0 +1,875 @@
+/* ========================================
+   KVIZOTEKA - Glavni CSS
+   Moderan, responzivan dizajn s animacijama
+   ======================================== */
+
+/* ========== CSS VARIJABLE ========== */
+:root {
+    /* Boje - Moderna paleta */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --danger-gradient: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+    
+    --primary-color: #667eea;
+    --primary-dark: #5a67d8;
+    --secondary-color: #764ba2;
+    
+    --success-color: #38ef7d;
+    --success-dark: #11998e;
+    --danger-color: #f45c43;
+    --danger-dark: #eb3349;
+    
+    --bg-dark: #0f0f1a;
+    --bg-card: rgba(255, 255, 255, 0.05);
+    --bg-card-hover: rgba(255, 255, 255, 0.1);
+    
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    
+    /* Sjene i efekti */
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.3);
+    
+    /* Dimenzije */
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --border-radius-lg: 24px;
+    --border-radius-xl: 32px;
+    
+    /* Prijelazi */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Fontovi */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ========== RESET I BAZA ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ========== GLAVNI KONTEJNER ========== */
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    background: 
+        radial-gradient(ellipse at top left, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+        var(--bg-dark);
+}
+
+/* ========== DEKORATIVNI ELEMENTI POZADINE ========== */
+.bg-decoration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: float 20s infinite ease-in-out;
+}
+
+.circle-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--primary-color);
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.circle-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--secondary-color);
+    bottom: -50px;
+    right: -50px;
+    animation-delay: -7s;
+}
+
+.circle-3 {
+    width: 200px;
+    height: 200px;
+    background: #f093fb;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -14s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+    50% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    75% {
+        transform: translate(-30px, -20px) scale(1.05);
+    }
+}
+
+/* ========== EKRANI ========== */
+.screen {
+    display: none;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 0.5s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== POČETNI EKRAN ========== */
+.start-content {
+    text-align: center;
+    padding: 40px;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.logo-container {
+    margin-bottom: 24px;
+}
+
+.logo-icon {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-glow);
+    animation: pulse 2s infinite ease-in-out;
+    overflow: hidden;
+    position: relative;
+}
+
+.logo-emoji {
+    font-size: 48px;
+}
+
+.logo-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: var(--shadow-glow);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 60px rgba(102, 126, 234, 0.5);
+    }
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+.start-stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.stat-icon {
+    font-size: 1.2rem;
+}
+
+/* ========== GUMBI ========== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--bg-card-hover);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-large {
+    padding: 18px 48px;
+    font-size: 1.1rem;
+    border-radius: var(--border-radius-lg);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+.btn-arrow {
+    transition: transform var(--transition-fast);
+}
+
+.btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* ========== PROGRESS BAR ========== */
+.progress-container {
+    margin-bottom: 24px;
+    padding: 20px;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.progress-percentage {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--primary-gradient);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ========== KARTICA S PITANJEM ========== */
+.question-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Kontejner za sliku */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+}
+
+.question-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.question-card:hover .question-image {
+    transform: scale(1.02);
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to top, var(--bg-card), transparent);
+    pointer-events: none;
+}
+
+/* Sadržaj pitanja */
+.question-content {
+    padding: 24px;
+    padding-bottom: 16px;
+}
+
+.question-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+/* ========== ODGOVORI ========== */
+.answers-container {
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.answer-btn {
+    width: 100%;
+    padding: 18px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.answer-btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary-gradient);
+    transform: scaleY(0);
+    transition: transform var(--transition-normal);
+}
+
+.answer-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
+    transform: translateX(4px);
+}
+
+.answer-btn:hover:not(:disabled)::before {
+    transform: scaleY(1);
+}
+
+.answer-btn:disabled {
+    cursor: not-allowed;
+}
+
+/* Stanja odgovora */
+.answer-btn.correct {
+    background: linear-gradient(135deg, rgba(17, 153, 142, 0.2), rgba(56, 239, 125, 0.2));
+    border-color: var(--success-color);
+    animation: correctPulse 0.5s ease;
+}
+
+.answer-btn.correct::before {
+    background: var(--success-gradient);
+    transform: scaleY(1);
+}
+
+.answer-btn.wrong {
+    background: linear-gradient(135deg, rgba(235, 51, 73, 0.2), rgba(244, 92, 67, 0.2));
+    border-color: var(--danger-color);
+    animation: wrongShake 0.5s ease;
+}
+
+.answer-btn.wrong::before {
+    background: var(--danger-gradient);
+    transform: scaleY(1);
+}
+
+@keyframes correctPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+@keyframes wrongShake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    20%, 60% {
+        transform: translateX(-5px);
+    }
+    40%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+/* Gumb sljedeće pitanje */
+#next-btn {
+    margin: 24px;
+    width: calc(100% - 48px);
+}
+
+/* ========== ZAVRŠNI EKRAN ========== */
+.result-content {
+    text-align: center;
+    padding: 40px;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.result-icon {
+    font-size: 80px;
+    margin-bottom: 16px;
+    animation: bounceIn 0.8s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.result-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.result-message {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+/* Prikaz rezultata */
+.score-display {
+    margin-bottom: 32px;
+}
+
+.score-circle {
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    padding: 24px 48px;
+    background: var(--primary-gradient);
+    border-radius: var(--border-radius-xl);
+    box-shadow: var(--shadow-glow);
+}
+
+.score-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+}
+
+.score-divider {
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.score-total {
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.score-label {
+    margin-top: 12px;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+/* Statistike rezultata */
+.result-stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.result-stat {
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-md);
+    min-width: 100px;
+}
+
+.result-stat.correct {
+    border-left: 3px solid var(--success-color);
+}
+
+.result-stat.wrong {
+    border-left: 3px solid var(--danger-color);
+}
+
+.result-stat.percentage {
+    border-left: 3px solid var(--primary-color);
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.result-actions {
+    margin-top: 16px;
+}
+
+/* ========== RESPONZIVNI DIZAJN ========== */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .start-content,
+    .result-content {
+        padding: 32px 24px;
+    }
+    
+    .image-container {
+        height: 200px;
+    }
+    
+    .question-text {
+        font-size: 1.15rem;
+    }
+    
+    .result-stats {
+        gap: 12px;
+    }
+    
+    .result-stat {
+        padding: 12px 16px;
+        min-width: 80px;
+    }
+}
+
+/* Mobilni uređaji */
+@media (max-width: 480px) {
+    .app-container {
+        padding: 12px;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .logo-icon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .logo-emoji {
+        font-size: 40px;
+    }
+    
+    .start-content,
+    .result-content {
+        padding: 24px 20px;
+    }
+    
+    .start-stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .image-container {
+        height: 180px;
+    }
+    
+    .question-content {
+        padding: 20px;
+        padding-bottom: 12px;
+    }
+    
+    .question-text {
+        font-size: 1.05rem;
+    }
+    
+    .answers-container {
+        padding: 0 20px;
+    }
+    
+    .answer-btn {
+        padding: 14px 18px;
+        font-size: 0.95rem;
+    }
+    
+    #next-btn {
+        margin: 20px;
+        width: calc(100% - 40px);
+    }
+    
+    .btn-large {
+        padding: 16px 36px;
+        font-size: 1rem;
+    }
+    
+    .progress-container {
+        padding: 16px;
+    }
+    
+    .result-icon {
+        font-size: 60px;
+    }
+    
+    .result-title {
+        font-size: 2rem;
+    }
+    
+    .score-circle {
+        padding: 20px 36px;
+    }
+    
+    .score-number {
+        font-size: 2.5rem;
+    }
+    
+    .score-divider,
+    .score-total {
+        font-size: 1.5rem;
+    }
+    
+    .result-stats {
+        gap: 8px;
+    }
+    
+    .result-stat {
+        flex: 1;
+        min-width: 0;
+        padding: 10px 12px;
+    }
+    
+    .stat-value {
+        font-size: 1.25rem;
+    }
+    
+    .floating-circle {
+        filter: blur(60px);
+    }
+    
+    .circle-1 {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .circle-2 {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .circle-3 {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

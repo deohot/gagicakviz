@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gagić kviz - Interaktivni kviz s pitanjima i slikama. Testiraj svoje znanje!">
+    <title>Gagić kviz</title>
+    <link rel="stylesheet" href="style.css?v=3">
+    <!-- Google Fonts - Inter za moderan izgled -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Dekorativni elementi za pozadinu -->
+        <div class="bg-decoration">
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+            <div class="floating-circle circle-3"></div>
+        </div>
+
+        <!-- ========== POČETNI EKRAN ========== -->
+        <section id="start-screen" class="screen active">
+            <div class="start-content">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <img src="resources/images/logo.jpeg" alt="Gagić kviz Logo" class="logo-image">
+                    </div>
+                </div>
+                <h1 class="main-title">Gagić kviz</h1>
+                <p class="subtitle">Testiraj svoje ultimativno gagić znanje i dokaži da si baš ti pravi gagić!</p>
+                <button id="start-btn" class="btn btn-primary btn-large">
+                    <span class="btn-icon">▶</span>
+                    Pokreni kviz
+                </button>
+                <div class="start-stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">📝</span>
+                        <span id="total-questions-count">5</span> pitanja
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">⏱️</span>
+                        Bez vremenskog ograničenja
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== KVIZ EKRAN ========== -->
+        <section id="quiz-screen" class="screen">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span class="progress-text">Pitanje <span id="current-question">1</span> od <span id="total-questions">5</span></span>
+                    <span class="progress-percentage" id="progress-percentage">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- Kartica s pitanjem -->
+            <div class="question-card" id="question-card">
+                <!-- Slika pitanja -->
+                <div class="image-container">
+                    <img id="question-image" src="" alt="Slika pitanja" class="question-image">
+                    <div class="image-overlay"></div>
+                </div>
+
+                <!-- Tekst pitanja -->
+                <div class="question-content">
+                    <h2 class="question-text" id="question-text">Učitavanje pitanja...</h2>
+                </div>
+
+                <!-- Ponuđeni odgovori -->
+                <div class="answers-container" id="answers-container">
+                    <!-- Odgovori se dinamički generiraju -->
+                </div>
+
+                <!-- Gumb za sljedeće pitanje -->
+                <button id="next-btn" class="btn btn-secondary" disabled>
+                    Sljedeće pitanje
+                    <span class="btn-arrow">→</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ========== ZAVRŠNI EKRAN ========== -->
+        <section id="result-screen" class="screen">
+            <div class="result-content">
+                <div class="result-icon" id="result-icon">🏆</div>
+                <h2 class="result-title" id="result-title">Čestitamo!</h2>
+                <p class="result-message" id="result-message">Završili ste kviz!</p>
+                
+                <!-- Prikaz rezultata -->
+                <div class="score-display">
+                    <div class="score-circle">
+                        <span class="score-number" id="score-number">0</span>
+                        <span class="score-divider">/</span>
+                        <span class="score-total" id="score-total">5</span>
+                    </div>
+                    <p class="score-label">točnih odgovora</p>
+                </div>
+
+                <!-- Statistike -->
+                <div class="result-stats">
+                    <div class="result-stat correct">
+                        <span class="stat-value" id="correct-count">0</span>
+                        <span class="stat-label">Točno</span>
+                    </div>
+                    <div class="result-stat wrong">
+                        <span class="stat-value" id="wrong-count">0</span>
+                        <span class="stat-label">Netočno</span>
+                    </div>
+                    <div class="result-stat percentage">
+                        <span class="stat-value" id="percentage-score">0%</span>
+                        <span class="stat-label">Postotak</span>
+                    </div>
+                </div>
+
+                <!-- Gumbi -->
+                <div class="result-actions">
+                    <button id="restart-btn" class="btn btn-primary btn-large">
+                        <span class="btn-icon">🔄</span>
+                        Ponovi kviz
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

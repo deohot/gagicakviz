@@ -1,0 +1,76 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "image": "resources/images/minecraft.jpeg",
+            "question": "Na koju vas poznatu igricu podsjeća palčić sa slike?",
+            "answers": ["Minecraft", "LOL", "Super Mario", "Crash team racing"],
+            "correctAnswer": 0
+        },
+        {
+            "id": 2,
+            "image": "resources/images/misokovac.jpeg",
+            "question": "Koji poznati estradni pjevač se nalazi na ovoj slici?",
+            "answers": ["Mišo Kovač", "Vinko Coce", "Toni cetinski"],
+            "correctAnswer": 0
+        },
+        {
+            "id": 3,
+            "image": "resources/images/top.jpeg",
+            "question": "Kojim ćete riječima smiriti bijesnu gospođu na topu?",
+            "answers": ["pLestani pLestani", "smiLi se, smiLi se", "nemojte nemojte", "odstupite gospođo"],
+            "correctAnswer": 1
+        },
+        {
+            "id": 4,
+            "image": "resources/images/krampus.jpeg",
+            "question": "Što je na ovoj slici strašnije?",
+            "answers": ["Krampus desno", "Krampus lijevo"],
+            "correctAnswer": 1
+        },
+        {
+            "id": 5,
+            "image": "resources/images/mejasi.jpeg",
+            "question": "Koja pjesma svira u pozadini ove slike?",
+            "answers": ["Kumovi - Da mi život da", "Grupa Vigor - još fališ", "Mejaši - 5,6 piva", "Dečki z bregov - zagorski cug"],
+            "correctAnswer": 2
+        },
+        {
+            "id": 6,
+            "image": "resources/images/nos.jpeg",
+            "question": "Što radi gospođa na ovoj slici?",
+            "answers": ["Kopa nos", "Škaklja medu", "Vraća dlaku u nos"],
+            "correctAnswer": 2
+        },
+        {
+            "id": 7,
+            "image": "resources/images/tupavi.jpeg",
+            "question": "Tko se nalazi na slici?",
+            "answers": ["Tupavi", "Šašavi", "Blentavi"],
+            "correctAnswer": 0
+        }   ,
+        {
+            "id": 8,
+            "image": "resources/images/miu.jpeg",
+            "question": "Koja životinja se nalazi na slici?",
+            "answers": [ "VAU VAU","MIU MIU", "MEEEEEEEEEEE"],
+            "correctAnswer": 1
+        }  
+         ,
+        {
+            "id": 9,
+            "image": "resources/images/tralalero.jpeg",
+            "question": "Koja od ponuđenih životinja statistički ima najviše ubojstva godišnje?",
+            "answers": [ "Morski pas","Kit ubojica", "Patka"],
+            "correctAnswer": 2
+        },
+        {
+            "id": 10,
+            "image": "resources/images/kakamise.jpeg",
+            "question": "Koji je ispravan odgovor na pitanje Baš jako me voliš?",
+            "answers": [ "Kaka mi se", "Da, baš jako te volim", "Ne, najviše te volim"],
+            "correctAnswer": 0
+        } 
+    ]   
+}
+ 
